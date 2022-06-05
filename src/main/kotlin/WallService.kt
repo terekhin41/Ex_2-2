@@ -17,7 +17,7 @@ class WallService {
         val publishingPost = post.copy(
             id = postId,
             date = Instant.now().epochSecond.toInt(),
-            ownerId = wallId
+            ownerId = id
         )
         storage += publishingPost
         return storage.last()

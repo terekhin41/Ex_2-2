@@ -40,8 +40,4 @@ data class Post(
     override fun hashCode(): Int {
         return id
     }
-
-    fun update(): Boolean {
-        return true //TODO
-    }
 }
