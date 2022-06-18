@@ -25,12 +25,16 @@ class WallService {
 
     fun update(post: Post): Boolean {
         if (post.ownerId != wallId || post.id > storage.size) return false
-        val oldPost = storage[post.id - 1]
-        storage[post.id - 1] = post.copy(
-          id = oldPost.id,
-          date = oldPost.date,
-          ownerId = oldPost.ownerId
-        )
+
+        for ((index, oldPost) in storage.withIndex()) {
+            if (post.id == index) {
+                storage[index] = post.copy(
+                    ownerId = oldPost.ownerId,
+                    id = oldPost.id,
+                    date = oldPost.date
+                )
+            }
+        }
         return true
     }
 
